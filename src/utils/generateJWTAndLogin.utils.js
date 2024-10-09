@@ -6,9 +6,11 @@ export const generateJWTAndLogin = async (res , user) => {
         expires : new Date(
             Date.now() + process.env.TOCKEN_EXPIRY*60*60*1000
         ),
+        sameSite : "None",
+        secure : true,
         httpOnly: true, 
         path : '/',
-        sameSite : "None"
+        
     }
 
     res.status(200).cookie('token',token,option).json({

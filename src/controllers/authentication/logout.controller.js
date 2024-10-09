@@ -4,6 +4,8 @@ export const userLogout = asyncHandler(async (req , res , next) => {
     const option = {
         expires : new Date(Date.now()),
         httpOnly : true,
+        sameSite : 'None',
+        secure : true
     }
     res.status(200).cookie('token',undefined , option).json({
         success : true,
