@@ -5,7 +5,7 @@ import { userModels } from "../../models/user.model.js";
 
 export const isLoggedIn = asyncHandler(async (req , res , next) => {
     let token = req.cookies.token
-    token ? token : req.query.token;
+    token = token ? token : req.query.token;
     if(!token) return next(new ErrorHandler("Please login to access this resource !",400))
     
     try {
