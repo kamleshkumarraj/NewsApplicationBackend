@@ -3,7 +3,7 @@ import ErrorHandler from "../../error/ErrorHandler.error.js";
 import { userModels } from "../../models/user.model.js";
 
 export const verificationEmail = asyncHandler(async (req , res , next) => {
-    const tocken = req.params.tocken
+    const token = req.params.tocken
     const verifyEmailTocken = crypto.createHash('sha256').update(tocken).digest('hex')
     const user = await userModels.findOne({verifyEmailTocken , verifyEmailExpiry : {$gt : Date.now()}})
 
